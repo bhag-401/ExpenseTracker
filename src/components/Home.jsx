@@ -13,6 +13,7 @@ const Home = () => {
       try{
        await createUserWithEmailAndPassword(auth,email,password);
        const user=auth.currentUser;
+       localStorage.setItem('uid', user.uid);
        console.log(user);
        if(user){
        await  setDoc(doc(db,"Users",user.uid),{email:user.email});
@@ -40,7 +41,7 @@ const Home = () => {
      <input type="password" id={style.input2} placeholder='Password' value={password} onChange={(e)=> setPassword(e.target.value)}/>
      <br />
      <br />
-     <button onClick={ handleRegister}>Sign Up</button>
+     <button onClick={ handleRegister}><Link to="/Signin">Sign Up</Link></button>
      <br />
      <br />
      <h3>Already on ExpenceTracker?<Link to="/Signin">Sign in</Link></h3>

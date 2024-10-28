@@ -12,6 +12,9 @@ const Signin = () => {
       e.preventDefault();
       try{
         await signInWithEmailAndPassword(auth,email,password);
+        const user=auth.currentUser;
+        console.log(user)
+       localStorage.setItem('uid', user.uid);
         console.log("User logged in Successfully");
         toast.success("User logged in successfully",{position:"top-center"});
         alert("User logged successfully");
